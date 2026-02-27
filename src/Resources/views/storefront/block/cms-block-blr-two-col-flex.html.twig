@@ -1,0 +1,22 @@
+{# 
+    blr-two-col-flex: 2-spaltiger Flex-Block, 50:50 (hardkodiert).
+    Responsiv: col-12 col-md-6; CSS-Klassen aus Config vorbereitet.
+#}
+{% set cssLeft  = block.config.cssClassLeft.value  ?? '' %}
+{% set cssRight = block.config.cssClassRight.value ?? '' %}
+
+<div class="row blr-two-col-flex">
+    {% set element = block.slots.getSlot('left') %}
+    <div class="col-12 col-md-6 {{ cssLeft }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
+        {% if element %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+        {% endif %}
+    </div>
+
+    {% set element = block.slots.getSlot('right') %}
+    <div class="col-12 col-md-6 {{ cssRight }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
+        {% if element %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+        {% endif %}
+    </div>
+</div>
