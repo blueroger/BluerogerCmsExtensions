@@ -1,0 +1,23 @@
+{
+    "name": "blueroger/cms-extensions",
+    "description": "Extended CMS blocks with flexible column widths and configurable CSS classes for shopping experiences.",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "shopware/core": "~6.6.0 || ~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Blueroger\\CmsExtensions\\BluerogerCmsExtensions",
+        "label": {
+            "de-DE": "Blueroger - Erweiterte Inhaltselemente",
+            "en-GB": "Blueroger - Extended Content Elements"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Blueroger\\CmsExtensions\\": "src/"
+        }
+    }
+}
