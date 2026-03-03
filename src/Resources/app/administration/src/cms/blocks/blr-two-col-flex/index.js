@@ -1,5 +1,6 @@
 import './component';
 import './preview';
+import './config';
 
 Shopware.Service('cmsService').registerCmsBlock({
     name: 'blr-two-col-flex',

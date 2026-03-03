@@ -1,22 +1,31 @@
-{# 
-    blr-two-col-flex: 2-spaltiger Flex-Block, 50:50 (hardkodiert).
-    Responsiv: col-12 col-md-6; CSS-Klassen aus Config vorbereitet.
+{#
+    blr-two-col-flex: 2-spaltiger Flex-Block mit konfigurierbarem Spaltenverhältnis.
+    Responsiv: col-12 col-md-*; CSS-Klassen und Ratio aus Config (?? Fallback).
 #}
-{% set cssLeft  = block.config.cssClassLeft.value  ?? '' %}
-{% set cssRight = block.config.cssClassRight.value ?? '' %}
+{% set ratio   = block.customFields.columnRatio ?? '50-50' %}
+{% set cssLeft = block.customFields.cssClassLeft ?? '' %}
+{% set cssRight = block.customFields.cssClassRight ?? '' %}
 
-<div class="row blr-two-col-flex">
-    {% set element = block.slots.getSlot('left') %}
-    <div class="col-12 col-md-6 {{ cssLeft }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
-        {% if element %}
-            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
-        {% endif %}
-    </div>
+{% set colMap = {
+    '50-50': { left: 'col-12 col-md-6', right: 'col-12 col-md-6' },
+    '33-66': { left: 'col-12 col-md-4', right: 'col-12 col-md-8' },
+    '66-33': { left: 'col-12 col-md-8', right: 'col-12 col-md-4' },
+    '25-75': { left: 'col-12 col-md-3', right: 'col-12 col-md-9' },
+    '75-25': { left: 'col-12 col-md-9', right: 'col-12 col-md-3' },
+} %}
+{% set colLeft  = colMap[ratio] is defined ? colMap[ratio].left : 'col-12 col-md-6' %}
+{% set colRight = colMap[ratio] is defined ? colMap[ratio].right : 'col-12 col-md-6' %}
 
-    {% set element = block.slots.getSlot('right') %}
-    <div class="col-12 col-md-6 {{ cssRight }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
-        {% if element %}
-            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
-        {% endif %}
-    </div>
+{% set element = block.slots.getSlot('left') %}
+<div class="{{ colLeft }} {{ cssLeft }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
+    {% if element %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+    {% endif %}
+</div>
+
+{% set element = block.slots.getSlot('right') %}
+<div class="{{ colRight }} {{ cssRight }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>
+    {% if element %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+    {% endif %}
 </div>

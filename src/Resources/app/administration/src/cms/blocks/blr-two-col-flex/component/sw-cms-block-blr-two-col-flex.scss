@@ -1,0 +1,8 @@
+.sw-cms-block-blr-two-col-flex {
+    display: flex;
+    gap: 8px;
+
+    > .sw-cms-slot {
+        flex: 1;
+    }
+}

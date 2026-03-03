@@ -1,0 +1,23 @@
+{# TODO 6.7: sw_cms_sidebar_layout_assignment — Block-Name nach Migration prüfen #}
+{% block sw_cms_sidebar_layout_assignment %}
+    {% parent %}
+    <sw-sidebar-item
+        v-if="selectedBlock && selectedBlock.type === 'blr-two-col-flex'"
+        ref="blrBlockSettingsSidebar"
+        icon="regular-line-column"
+        :title="'Blueroger: Block-Einstellungen'"
+    >
+        <sw-sidebar-collapse :expand-on-loading="true">
+            <template #header>
+                <span>Zwei Spalten (Flex)</span>
+            </template>
+            <template #content>
+                <component
+                    :is="'cms-block-blr-two-col-flex-config'"
+                    :block="selectedBlock"
+                    @block-update="onBlockUpdate"
+                />
+            </template>
+        </sw-sidebar-collapse>
+    </sw-sidebar-item>
+{% endblock %}

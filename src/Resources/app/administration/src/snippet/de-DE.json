@@ -1,0 +1,40 @@
+{
+    "apps": {
+        "sw-cms": {
+            "detail": {
+                "label": {
+                    "blockCategory": {
+                        "blueroger": "Blueroger – Erweiterte Inhaltselemente"
+                    }
+                }
+            }
+        }
+    },
+    "blr": {
+        "cms": {
+            "blocks": {
+                "twoColFlex": {
+                    "label": "Zwei Spalten (Flex)",
+                    "config": {
+                        "columnRatio": {
+                            "label": "Spaltenverhältnis",
+                            "options": {
+                                "5050": "50% / 50%",
+                                "3366": "33% / 66%",
+                                "6633": "66% / 33%",
+                                "2575": "25% / 75%",
+                                "7525": "75% / 25%"
+                            }
+                        },
+                        "cssClassLeft": {
+                            "label": "CSS-Klasse links"
+                        },
+                        "cssClassRight": {
+                            "label": "CSS-Klasse rechts"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
