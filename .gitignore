@@ -11,3 +11,14 @@
 # OS
 .DS_Store
 Thumbs.db
+
+# Lokale Handoff-Docs (nicht ausliefern)
+/docs/
+
+# PHPStan (lokale Überschreibung + Cache)
+/phpstan.neon
+/var/phpstan/
+
+# PHP CS Fixer (lokale Überschreibung + Cache)
+/.php-cs-fixer.php
+/.php-cs-fixer.cache

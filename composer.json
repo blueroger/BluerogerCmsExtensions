@@ -8,6 +8,17 @@
         "php": "^8.2",
         "shopware/core": "~6.6.0 || ~6.7.0"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "shopwarelabs/phpstan-shopware": "^0.1"
+    },
+    "scripts": {
+        "analyse": "phpstan analyse",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "qa": ["@analyse", "@cs-check"]
+    },
     "extra": {
         "shopware-plugin-class": "Blueroger\\CmsExtensions\\BluerogerCmsExtensions",
         "label": {
