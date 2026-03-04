@@ -17,11 +17,13 @@ class BluerogerCmsExtensions extends Plugin
     {
         parent::uninstall($uninstallContext);
 
+        if ($uninstallContext->keepUserData()) {
+            return;
+        }
+
         // TODO: Fallback-Migration implementieren
-        // Ziel: cms_block.type zurücksetzen auf Standard-Blöcke
-        // blr-two-col-flex   → image-text (Slots: left, right ✅)
-        // blr-three-col-flex → three-column-text (Slots: left, center, right ✅)
-        // blr-four-col       → kein Standard-Fallback ⚠️
-        // Bewusst offen gelassen — siehe Architektur-Dokumentation
+        // blr-two-col-flex   → image-text        (Slots kompatibel)
+        // blr-three-col-flex → three-column-text (Slots kompatibel)
+        // blr-four-col       → text              (kein Core-Fallback, Option A)
     }
 }
