@@ -4,6 +4,12 @@
     "version": "1.0.0",
     "type": "shopware-platform-plugin",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Blueroger",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "shopware/core": "~6.6.0 || ~6.7.0"
@@ -24,6 +30,18 @@
         "label": {
             "de-DE": "Blueroger - Erweiterte Inhaltselemente",
             "en-GB": "Blueroger - Extended Content Elements"
+        },
+        "description": {
+            "de-DE": "Erweiterte CMS-Blöcke mit konfigurierbaren Spaltenbreiten und CSS-Klassen für Shopware-6-Shopping-Experiences. Ideal für flexible Layouts und mehrspaltige Inhalte im Storefront.",
+            "en-GB": "Extended CMS blocks with flexible column widths and configurable CSS classes for Shopware 6 Shopping Experiences. Ideal for flexible storefront layouts and multi-column content."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://github.com/blueroger",
+            "en-GB": "https://github.com/blueroger"
+        },
+        "supportLink": {
+            "de-DE": "https://github.com/blueroger/BluerogerCmsExtensions/issues",
+            "en-GB": "https://github.com/blueroger/BluerogerCmsExtensions/issues"
         }
     },
     "autoload": {
