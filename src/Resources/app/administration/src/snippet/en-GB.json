@@ -33,6 +33,29 @@
                             "label": "CSS class right"
                         }
                     }
+                },
+                "threeColFlex": {
+                    "label": "Three columns (flex)",
+                    "config": {
+                        "columnRatio": {
+                            "label": "Column ratio",
+                            "options": {
+                                "333333": "33% / 33% / 33%",
+                                "255025": "25% / 50% / 25%",
+                                "502525": "50% / 25% / 25%",
+                                "252550": "25% / 25% / 50%"
+                            }
+                        },
+                        "cssClassLeft": {
+                            "label": "CSS class left"
+                        },
+                        "cssClassCenter": {
+                            "label": "CSS class center"
+                        },
+                        "cssClassRight": {
+                            "label": "CSS class right"
+                        }
+                    }
                 }
             }
         }

@@ -33,6 +33,29 @@
                             "label": "CSS-Klasse rechts"
                         }
                     }
+                },
+                "threeColFlex": {
+                    "label": "Drei Spalten (Flex)",
+                    "config": {
+                        "columnRatio": {
+                            "label": "Spaltenverhältnis",
+                            "options": {
+                                "333333": "33% / 33% / 33%",
+                                "255025": "25% / 50% / 25%",
+                                "502525": "50% / 25% / 25%",
+                                "252550": "25% / 25% / 50%"
+                            }
+                        },
+                        "cssClassLeft": {
+                            "label": "CSS-Klasse links"
+                        },
+                        "cssClassCenter": {
+                            "label": "CSS-Klasse Mitte"
+                        },
+                        "cssClassRight": {
+                            "label": "CSS-Klasse rechts"
+                        }
+                    }
                 }
             }
         }

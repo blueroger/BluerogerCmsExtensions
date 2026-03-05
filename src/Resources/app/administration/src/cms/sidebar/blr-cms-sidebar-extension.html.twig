@@ -2,18 +2,30 @@
 {% block sw_cms_sidebar_layout_assignment %}
     {% parent %}
     <sw-sidebar-item
-        v-if="selectedBlock && selectedBlock.type === 'blr-two-col-flex'"
-        ref="blrBlockSettingsSidebar"
         icon="regular-line-column"
         :title="'Blueroger: Block-Einstellungen'"
     >
-        <sw-sidebar-collapse :expand-on-loading="true">
+        <sw-sidebar-collapse
+            v-if="selectedBlock && (selectedBlock.type === 'blr-two-col-flex' || selectedBlock.type === 'blr-three-col-flex')"
+            :expand-on-loading="true"
+        >
             <template #header>
-                <span>Zwei Spalten (Flex)</span>
+                <span>{{
+                    selectedBlock.type === 'blr-two-col-flex'
+                        ? $tc('blr.cms.blocks.twoColFlex.label')
+                        : $tc('blr.cms.blocks.threeColFlex.label')
+                }}</span>
             </template>
             <template #content>
                 <component
+                    v-if="selectedBlock.type === 'blr-two-col-flex'"
                     :is="'cms-block-blr-two-col-flex-config'"
+                    :block="selectedBlock"
+                    @block-update="onBlockUpdate"
+                />
+                <component
+                    v-else-if="selectedBlock.type === 'blr-three-col-flex'"
+                    :is="'cms-block-blr-three-col-flex-config'"
                     :block="selectedBlock"
                     @block-update="onBlockUpdate"
                 />

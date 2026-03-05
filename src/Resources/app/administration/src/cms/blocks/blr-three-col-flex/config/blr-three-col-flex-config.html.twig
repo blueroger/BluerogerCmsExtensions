@@ -1,0 +1,36 @@
+{# TODO 6.7: sw-card → mt-card #}
+<sw-card
+    class="cms-block-blr-three-col-flex-config"
+>
+    {# TODO 6.7: sw-select → mt-select #}
+    <sw-select-field
+        v-model:value="block.customFields.columnRatio"
+        :label="$tc('blr.cms.blocks.threeColFlex.config.columnRatio.label')"
+    >
+        <option
+            v-for="opt in columnRatioOptions"
+            :key="opt.value"
+            :value="opt.value"
+        >
+            {{ opt.label }}
+        </option>
+    </sw-select-field>
+
+    {# TODO 6.7: sw-text-field → mt-text-field #}
+    <sw-text-field
+        v-model:value="block.customFields.cssClassLeft"
+        :label="$tc('blr.cms.blocks.threeColFlex.config.cssClassLeft.label')"
+    />
+
+    {# TODO 6.7: sw-text-field → mt-text-field #}
+    <sw-text-field
+        v-model:value="block.customFields.cssClassCenter"
+        :label="$tc('blr.cms.blocks.threeColFlex.config.cssClassCenter.label')"
+    />
+
+    {# TODO 6.7: sw-text-field → mt-text-field #}
+    <sw-text-field
+        v-model:value="block.customFields.cssClassRight"
+        :label="$tc('blr.cms.blocks.threeColFlex.config.cssClassRight.label')"
+    />
+</sw-card>
