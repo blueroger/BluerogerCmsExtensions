@@ -9,6 +9,14 @@
         :hide-clearable-button="true"
     />
 
+    <mt-select
+        v-model="block.customFields.responsiveBreakpoint"
+        :options="breakpointOptions"
+        :label="$t('blr.cms.blocks.twoColFlex.config.responsiveBreakpoint.label')"
+        :small="true"
+        :hide-clearable-button="true"
+    />
+
     <mt-text-field
         v-model="block.customFields.cssClassLeft"
         :label="$t('blr.cms.blocks.twoColFlex.config.cssClassLeft.label')"

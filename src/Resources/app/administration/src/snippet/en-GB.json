@@ -26,6 +26,14 @@
                                 "7525": "75% / 25%"
                             }
                         },
+                        "responsiveBreakpoint": {
+                            "label": "Responsive Breakpoint",
+                            "options": {
+                                "md": "MD — ab 768px",
+                                "lg": "LG — ab 992px",
+                                "xl": "XL — ab 1200px"
+                            }
+                        },
                         "cssClassLeft": {
                             "label": "CSS class left"
                         },
@@ -44,6 +52,14 @@
                                 "255025": "25% / 50% / 25%",
                                 "502525": "50% / 25% / 25%",
                                 "252550": "25% / 25% / 50%"
+                            }
+                        },
+                        "responsiveBreakpoint": {
+                            "label": "Responsive Breakpoint",
+                            "options": {
+                                "md": "MD — ab 768px",
+                                "lg": "LG — ab 992px",
+                                "xl": "XL — ab 1200px"
                             }
                         },
                         "cssClassLeft": {

@@ -1,21 +1,22 @@
 {#
     blr-three-col-flex: 3-spaltiger Flex-Block mit konfigurierbarem Spaltenverhältnis.
-    Responsiv: col-12 col-md-*; CSS-Klassen und Ratio aus Config (?? Fallback).
+    Responsiv: col-12 col-{breakpoint}-*; CSS-Klassen und Ratio aus Config (?? Fallback).
 #}
-{% set ratio    = block.customFields.columnRatio ?? '33-33-33' %}
-{% set cssLeft  = block.customFields.cssClassLeft ?? '' %}
-{% set cssCenter = block.customFields.cssClassCenter ?? '' %}
-{% set cssRight = block.customFields.cssClassRight ?? '' %}
+{% set ratio      = block.customFields.columnRatio ?? '33-33-33' %}
+{% set breakpoint = block.customFields.responsiveBreakpoint ?? 'md' %}
+{% set cssLeft    = block.customFields.cssClassLeft ?? '' %}
+{% set cssCenter  = block.customFields.cssClassCenter ?? '' %}
+{% set cssRight   = block.customFields.cssClassRight ?? '' %}
 
 {% set colMap = {
-    '33-33-33': { left: 'col-12 col-md-4', center: 'col-12 col-md-4', right: 'col-12 col-md-4' },
-    '25-50-25': { left: 'col-12 col-md-3', center: 'col-12 col-md-6', right: 'col-12 col-md-3' },
-    '50-25-25': { left: 'col-12 col-md-6', center: 'col-12 col-md-3', right: 'col-12 col-md-3' },
-    '25-25-50': { left: 'col-12 col-md-3', center: 'col-12 col-md-3', right: 'col-12 col-md-6' },
+    '33-33-33': { left: 'col-12 col-' ~ breakpoint ~ '-4', center: 'col-12 col-' ~ breakpoint ~ '-4', right: 'col-12 col-' ~ breakpoint ~ '-4' },
+    '25-50-25': { left: 'col-12 col-' ~ breakpoint ~ '-3', center: 'col-12 col-' ~ breakpoint ~ '-6', right: 'col-12 col-' ~ breakpoint ~ '-3' },
+    '50-25-25': { left: 'col-12 col-' ~ breakpoint ~ '-6', center: 'col-12 col-' ~ breakpoint ~ '-3', right: 'col-12 col-' ~ breakpoint ~ '-3' },
+    '25-25-50': { left: 'col-12 col-' ~ breakpoint ~ '-3', center: 'col-12 col-' ~ breakpoint ~ '-3', right: 'col-12 col-' ~ breakpoint ~ '-6' },
 } %}
-{% set colLeft   = colMap[ratio] is defined ? colMap[ratio].left : 'col-12 col-md-4' %}
-{% set colCenter = colMap[ratio] is defined ? colMap[ratio].center : 'col-12 col-md-4' %}
-{% set colRight  = colMap[ratio] is defined ? colMap[ratio].right : 'col-12 col-md-4' %}
+{% set colLeft   = colMap[ratio] is defined ? colMap[ratio].left : 'col-12 col-' ~ breakpoint ~ '-4' %}
+{% set colCenter = colMap[ratio] is defined ? colMap[ratio].center : 'col-12 col-' ~ breakpoint ~ '-4' %}
+{% set colRight  = colMap[ratio] is defined ? colMap[ratio].right : 'col-12 col-' ~ breakpoint ~ '-4' %}
 
 {% set element = block.slots.getSlot('left') %}
 <div class="{{ colLeft }} {{ cssLeft }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>

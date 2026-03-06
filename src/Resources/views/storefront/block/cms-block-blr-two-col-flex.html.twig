@@ -1,20 +1,21 @@
 {#
     blr-two-col-flex: 2-spaltiger Flex-Block mit konfigurierbarem Spaltenverhältnis.
-    Responsiv: col-12 col-md-*; CSS-Klassen und Ratio aus Config (?? Fallback).
+    Responsiv: col-12 col-{breakpoint}-*; CSS-Klassen und Ratio aus Config (?? Fallback).
 #}
-{% set ratio   = block.customFields.columnRatio ?? '50-50' %}
-{% set cssLeft = block.customFields.cssClassLeft ?? '' %}
-{% set cssRight = block.customFields.cssClassRight ?? '' %}
+{% set ratio     = block.customFields.columnRatio ?? '50-50' %}
+{% set breakpoint = block.customFields.responsiveBreakpoint ?? 'md' %}
+{% set cssLeft   = block.customFields.cssClassLeft ?? '' %}
+{% set cssRight  = block.customFields.cssClassRight ?? '' %}
 
 {% set colMap = {
-    '50-50': { left: 'col-12 col-md-6', right: 'col-12 col-md-6' },
-    '33-66': { left: 'col-12 col-md-4', right: 'col-12 col-md-8' },
-    '66-33': { left: 'col-12 col-md-8', right: 'col-12 col-md-4' },
-    '25-75': { left: 'col-12 col-md-3', right: 'col-12 col-md-9' },
-    '75-25': { left: 'col-12 col-md-9', right: 'col-12 col-md-3' },
+    '50-50': { left: 'col-12 col-' ~ breakpoint ~ '-6', right: 'col-12 col-' ~ breakpoint ~ '-6' },
+    '33-66': { left: 'col-12 col-' ~ breakpoint ~ '-4', right: 'col-12 col-' ~ breakpoint ~ '-8' },
+    '66-33': { left: 'col-12 col-' ~ breakpoint ~ '-8', right: 'col-12 col-' ~ breakpoint ~ '-4' },
+    '25-75': { left: 'col-12 col-' ~ breakpoint ~ '-3', right: 'col-12 col-' ~ breakpoint ~ '-9' },
+    '75-25': { left: 'col-12 col-' ~ breakpoint ~ '-9', right: 'col-12 col-' ~ breakpoint ~ '-3' },
 } %}
-{% set colLeft  = colMap[ratio] is defined ? colMap[ratio].left : 'col-12 col-md-6' %}
-{% set colRight = colMap[ratio] is defined ? colMap[ratio].right : 'col-12 col-md-6' %}
+{% set colLeft  = colMap[ratio] is defined ? colMap[ratio].left : 'col-12 col-' ~ breakpoint ~ '-6' %}
+{% set colRight = colMap[ratio] is defined ? colMap[ratio].right : 'col-12 col-' ~ breakpoint ~ '-6' %}
 
 {% set element = block.slots.getSlot('left') %}
 <div class="{{ colLeft }} {{ cssLeft }}"{% if element %} data-cms-element-id="{{ element.id }}"{% endif %}>

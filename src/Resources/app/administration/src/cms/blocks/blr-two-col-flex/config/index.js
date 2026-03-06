@@ -20,10 +20,20 @@ Shopware.Component.register('cms-block-blr-two-col-flex-config', {
                 { value: '75-25', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.7525') },
             ];
         },
+        breakpointOptions() {
+            return [
+                { value: 'md', label: this.$t('blr.cms.blocks.twoColFlex.config.responsiveBreakpoint.options.md') },
+                { value: 'lg', label: this.$t('blr.cms.blocks.twoColFlex.config.responsiveBreakpoint.options.lg') },
+                { value: 'xl', label: this.$t('blr.cms.blocks.twoColFlex.config.responsiveBreakpoint.options.xl') },
+            ];
+        },
     },
 
     watch: {
         'block.customFields.columnRatio'() {
+            this.$emit('block-update', this.block);
+        },
+        'block.customFields.responsiveBreakpoint'() {
             this.$emit('block-update', this.block);
         },
         'block.customFields.cssClassLeft'() {
@@ -46,6 +56,12 @@ Shopware.Component.register('cms-block-blr-two-col-flex-config', {
         }
         if (this.block.customFields.cssClassRight === undefined) {
             this.block.customFields.cssClassRight = '';
+        }
+        const validBreakpoints = ['md', 'lg', 'xl'];
+        if (this.block.customFields.responsiveBreakpoint === undefined) {
+            this.block.customFields.responsiveBreakpoint = 'md';
+        } else if (!validBreakpoints.includes(this.block.customFields.responsiveBreakpoint)) {
+            this.block.customFields.responsiveBreakpoint = 'md';
         }
         // Kein $emit hier — stört Element-Wechsel-Flow
     },
