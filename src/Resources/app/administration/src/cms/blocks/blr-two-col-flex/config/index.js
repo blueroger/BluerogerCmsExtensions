@@ -13,11 +13,11 @@ Shopware.Component.register('cms-block-blr-two-col-flex-config', {
     computed: {
         columnRatioOptions() {
             return [
-                { value: '50-50', label: this.$tc('blr.cms.blocks.twoColFlex.config.columnRatio.options.5050') },
-                { value: '33-66', label: this.$tc('blr.cms.blocks.twoColFlex.config.columnRatio.options.3366') },
-                { value: '66-33', label: this.$tc('blr.cms.blocks.twoColFlex.config.columnRatio.options.6633') },
-                { value: '25-75', label: this.$tc('blr.cms.blocks.twoColFlex.config.columnRatio.options.2575') },
-                { value: '75-25', label: this.$tc('blr.cms.blocks.twoColFlex.config.columnRatio.options.7525') },
+                { value: '50-50', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.5050') },
+                { value: '33-66', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.3366') },
+                { value: '66-33', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.6633') },
+                { value: '25-75', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.2575') },
+                { value: '75-25', label: this.$t('blr.cms.blocks.twoColFlex.config.columnRatio.options.7525') },
             ];
         },
     },

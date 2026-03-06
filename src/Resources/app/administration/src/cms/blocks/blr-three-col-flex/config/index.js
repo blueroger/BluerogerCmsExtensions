@@ -13,10 +13,10 @@ Shopware.Component.register('cms-block-blr-three-col-flex-config', {
     computed: {
         columnRatioOptions() {
             return [
-                { value: '33-33-33', label: this.$tc('blr.cms.blocks.threeColFlex.config.columnRatio.options.333333') },
-                { value: '25-50-25', label: this.$tc('blr.cms.blocks.threeColFlex.config.columnRatio.options.255025') },
-                { value: '50-25-25', label: this.$tc('blr.cms.blocks.threeColFlex.config.columnRatio.options.502525') },
-                { value: '25-25-50', label: this.$tc('blr.cms.blocks.threeColFlex.config.columnRatio.options.252550') },
+                { value: '33-33-33', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.333333') },
+                { value: '25-50-25', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.255025') },
+                { value: '50-25-25', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.502525') },
+                { value: '25-25-50', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.252550') },
             ];
         },
     },

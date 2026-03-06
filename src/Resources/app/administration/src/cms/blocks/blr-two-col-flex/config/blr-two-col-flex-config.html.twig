@@ -1,30 +1,21 @@
-{# TODO 6.7: sw-card → mt-card #}
-<sw-card
+<mt-card
     class="cms-block-blr-two-col-flex-config"
 >
-    {# TODO 6.7: sw-select → mt-select #}
-    <sw-select-field
-        v-model:value="block.customFields.columnRatio"
-        :label="$tc('blr.cms.blocks.twoColFlex.config.columnRatio.label')"
-    >
-        <option
-            v-for="opt in columnRatioOptions"
-            :key="opt.value"
-            :value="opt.value"
-        >
-            {{ opt.label }}
-        </option>
-    </sw-select-field>
-
-    {# TODO 6.7: sw-text-field → mt-text-field #}
-    <sw-text-field
-        v-model:value="block.customFields.cssClassLeft"
-        :label="$tc('blr.cms.blocks.twoColFlex.config.cssClassLeft.label')"
+    <mt-select
+        v-model="block.customFields.columnRatio"
+        :options="columnRatioOptions"
+        :label="$t('blr.cms.blocks.twoColFlex.config.columnRatio.label')"
+        :small="true"
+        :hide-clearable-button="true"
     />
 
-    {# TODO 6.7: sw-text-field → mt-text-field #}
-    <sw-text-field
-        v-model:value="block.customFields.cssClassRight"
-        :label="$tc('blr.cms.blocks.twoColFlex.config.cssClassRight.label')"
+    <mt-text-field
+        v-model="block.customFields.cssClassLeft"
+        :label="$t('blr.cms.blocks.twoColFlex.config.cssClassLeft.label')"
     />
-</sw-card>
+
+    <mt-text-field
+        v-model="block.customFields.cssClassRight"
+        :label="$t('blr.cms.blocks.twoColFlex.config.cssClassRight.label')"
+    />
+</mt-card>
