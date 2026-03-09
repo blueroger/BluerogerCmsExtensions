@@ -48,5 +48,10 @@
         "psr-4": {
             "Blueroger\\CmsExtensions\\": "src/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
     }
 }
