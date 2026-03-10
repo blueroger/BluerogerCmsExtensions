@@ -1,6 +1,8 @@
 import template from './blr-three-col-flex-config.html.twig';
 
-Shopware.Component.register('cms-block-blr-three-col-flex-config', {
+const { defineComponent, computed, watch, onMounted, getCurrentInstance } = Shopware.Vue;
+
+Shopware.Component.register('cms-block-blr-three-col-flex-config', defineComponent({
     template,
 
     props: {
@@ -10,64 +12,66 @@ Shopware.Component.register('cms-block-blr-three-col-flex-config', {
         },
     },
 
-    computed: {
-        columnRatioOptions() {
-            return [
-                { value: '33-33-33', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.333333') },
-                { value: '25-50-25', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.255025') },
-                { value: '50-25-25', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.502525') },
-                { value: '25-25-50', label: this.$t('blr.cms.blocks.threeColFlex.config.columnRatio.options.252550') },
-            ];
-        },
-        breakpointOptions() {
-            return [
-                { value: 'md', label: this.$t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.md') },
-                { value: 'lg', label: this.$t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.lg') },
-                { value: 'xl', label: this.$t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.xl') },
-            ];
-        },
-    },
+    emits: ['block-update'],
 
-    watch: {
-        'block.customFields.columnRatio'() {
-            this.$emit('block-update', this.block);
-        },
-        'block.customFields.responsiveBreakpoint'() {
-            this.$emit('block-update', this.block);
-        },
-        'block.customFields.cssClassLeft'() {
-            this.$emit('block-update', this.block);
-        },
-        'block.customFields.cssClassCenter'() {
-            this.$emit('block-update', this.block);
-        },
-        'block.customFields.cssClassRight'() {
-            this.$emit('block-update', this.block);
-        },
-    },
+    setup(props, { emit }) {
+        const instance = getCurrentInstance();
+        const $t = instance?.proxy?.$t ?? (k => k);
 
-    mounted() {
-        if (!this.block.customFields) {
-            this.block.customFields = {};
-        }
-        if (this.block.customFields.columnRatio === undefined) {
-            this.block.customFields.columnRatio = '33-33-33';
-        }
-        if (this.block.customFields.cssClassLeft === undefined) {
-            this.block.customFields.cssClassLeft = '';
-        }
-        if (this.block.customFields.cssClassCenter === undefined) {
-            this.block.customFields.cssClassCenter = '';
-        }
-        if (this.block.customFields.cssClassRight === undefined) {
-            this.block.customFields.cssClassRight = '';
-        }
-        const validBreakpoints = ['md', 'lg', 'xl'];
-        if (this.block.customFields.responsiveBreakpoint === undefined) {
-            this.block.customFields.responsiveBreakpoint = 'md';
-        } else if (!validBreakpoints.includes(this.block.customFields.responsiveBreakpoint)) {
-            this.block.customFields.responsiveBreakpoint = 'md';
-        }
-        // Kein $emit hier — stört Element-Wechsel-Flow
+        const columnRatioOptions = computed(() => [
+            { value: '33-33-33', label: $t('blr.cms.blocks.threeColFlex.config.columnRatio.options.333333') },
+            { value: '25-50-25', label: $t('blr.cms.blocks.threeColFlex.config.columnRatio.options.255025') },
+            { value: '50-25-25', label: $t('blr.cms.blocks.threeColFlex.config.columnRatio.options.502525') },
+            { value: '25-25-50', label: $t('blr.cms.blocks.threeColFlex.config.columnRatio.options.252550') },
+        ]);
+
+        const breakpointOptions = computed(() => [
+            { value: 'md', label: $t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.md') },
+            { value: 'lg', label: $t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.lg') },
+            { value: 'xl', label: $t('blr.cms.blocks.threeColFlex.config.responsiveBreakpoint.options.xl') },
+        ]);
+
+        watch(() => props.block?.customFields?.columnRatio, () => {
+            emit('block-update', props.block);
+        });
+        watch(() => props.block?.customFields?.responsiveBreakpoint, () => {
+            emit('block-update', props.block);
+        });
+        watch(() => props.block?.customFields?.cssClassLeft, () => {
+            emit('block-update', props.block);
+        });
+        watch(() => props.block?.customFields?.cssClassCenter, () => {
+            emit('block-update', props.block);
+        });
+        watch(() => props.block?.customFields?.cssClassRight, () => {
+            emit('block-update', props.block);
+        });
+
+        onMounted(() => {
+            if (!props.block.customFields) {
+                props.block.customFields = {};
+            }
+            if (props.block.customFields.columnRatio === undefined) {
+                props.block.customFields.columnRatio = '33-33-33';
+            }
+            if (props.block.customFields.cssClassLeft === undefined) {
+                props.block.customFields.cssClassLeft = '';
+            }
+            if (props.block.customFields.cssClassCenter === undefined) {
+                props.block.customFields.cssClassCenter = '';
+            }
+            if (props.block.customFields.cssClassRight === undefined) {
+                props.block.customFields.cssClassRight = '';
+            }
+            const validBreakpoints = ['md', 'lg', 'xl'];
+            if (props.block.customFields.responsiveBreakpoint === undefined) {
+                props.block.customFields.responsiveBreakpoint = 'md';
+            } else if (!validBreakpoints.includes(props.block.customFields.responsiveBreakpoint)) {
+                props.block.customFields.responsiveBreakpoint = 'md';
+            }
+            // Kein $emit hier — stört Element-Wechsel-Flow
+        });
+
+        return { columnRatioOptions, breakpointOptions };
     },
-});
+}));
