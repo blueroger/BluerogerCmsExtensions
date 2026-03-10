@@ -4,7 +4,7 @@
             "detail": {
                 "label": {
                     "blockCategory": {
-                        "blueroger": "Blueroger – Extended Content Elements"
+                        "blueroger": "Blueroger – Erweiterte Inhaltselemente"
                     }
                 }
             }
@@ -14,10 +14,10 @@
         "cms": {
             "blocks": {
                 "twoColFlex": {
-                    "label": "Two columns (flex)",
+                    "label": "Zwei Spalten (Flex)",
                     "config": {
                         "columnRatio": {
-                            "label": "Column ratio",
+                            "label": "Spaltenverhältnis",
                             "options": {
                                 "5050": "50% / 50%",
                                 "3366": "33% / 66%",
@@ -29,24 +29,24 @@
                         "responsiveBreakpoint": {
                             "label": "Responsive Breakpoint",
                             "options": {
-                                "md": "MD — from 768px",
-                                "lg": "LG — from 992px",
-                                "xl": "XL — from 1200px"
+                                "md": "MD — ab 768px",
+                                "lg": "LG — ab 992px",
+                                "xl": "XL — ab 1200px"
                             }
                         },
                         "cssClassLeft": {
-                            "label": "CSS class left"
+                            "label": "CSS-Klasse links"
                         },
                         "cssClassRight": {
-                            "label": "CSS class right"
+                            "label": "CSS-Klasse rechts"
                         }
                     }
                 },
                 "threeColFlex": {
-                    "label": "Three columns (flex)",
+                    "label": "Drei Spalten (Flex)",
                     "config": {
                         "columnRatio": {
-                            "label": "Column ratio",
+                            "label": "Spaltenverhältnis",
                             "options": {
                                 "333333": "33% / 33% / 33%",
                                 "255025": "25% / 50% / 25%",
@@ -57,19 +57,19 @@
                         "responsiveBreakpoint": {
                             "label": "Responsive Breakpoint",
                             "options": {
-                                "md": "MD — from 768px",
-                                "lg": "LG — from 992px",
-                                "xl": "XL — from 1200px"
+                                "md": "MD — ab 768px",
+                                "lg": "LG — ab 992px",
+                                "xl": "XL — ab 1200px"
                             }
                         },
                         "cssClassLeft": {
-                            "label": "CSS class left"
+                            "label": "CSS-Klasse links"
                         },
                         "cssClassCenter": {
-                            "label": "CSS class center"
+                            "label": "CSS-Klasse Mitte"
                         },
                         "cssClassRight": {
-                            "label": "CSS class right"
+                            "label": "CSS-Klasse rechts"
                         }
                     }
                 }
