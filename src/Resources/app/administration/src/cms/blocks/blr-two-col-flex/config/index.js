@@ -4,16 +4,13 @@ const { defineComponent, computed, watch, onMounted, getCurrentInstance } = Shop
 
 Shopware.Component.register('cms-block-blr-two-col-flex-config', defineComponent({
     template,
-
+    emits: ['block-update'],
     props: {
         block: {
             type: Object,
             required: true,
         },
     },
-
-    emits: ['block-update'],
-
     setup(props, { emit }) {
         const instance = getCurrentInstance();
         const $t = instance?.proxy?.$t ?? (k => k);
@@ -46,6 +43,8 @@ Shopware.Component.register('cms-block-blr-two-col-flex-config', defineComponent
         });
 
         onMounted(() => {
+            // Shopware CMS: block is a shared ref from parent; config sets defaults here, parent commits on block-update. No emit on mount.
+            /* eslint-disable vue/no-mutating-props */
             if (!props.block.customFields) {
                 props.block.customFields = {};
             }
@@ -64,6 +63,7 @@ Shopware.Component.register('cms-block-blr-two-col-flex-config', defineComponent
             } else if (!validBreakpoints.includes(props.block.customFields.responsiveBreakpoint)) {
                 props.block.customFields.responsiveBreakpoint = 'md';
             }
+            /* eslint-enable vue/no-mutating-props */
             // Kein $emit hier — stört Element-Wechsel-Flow
         });
 
