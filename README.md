@@ -15,13 +15,15 @@ Alle Blöcke sind:
 - Mit einstellbaren Bootstrap-Breakpoints — ab welcher Bildschirmbreite Spalten nebeneinander erscheinen
 - Mit Deinstallations-Schutz — Inhalte bleiben auch nach Plugin-Entfernung erhalten (siehe unten)
 
+![Block-Picker](screenshots/block-picker.png)
+
 ---
 
 ## Voraussetzungen
 
 | Anforderung | Version |
 |---|---|
-| Shopware | 6.6.x (6.7 in Vorbereitung) |
+| Shopware | 6.6.x |
 | PHP | ^8.2 |
 
 ---
@@ -40,13 +42,13 @@ bin/console cache:clear
 ```
 
 **Hinweis für Entwicklungsumgebungen:**
-Da das Plugin eigene JavaScript-Dateien für die Administration enthält (CMS-Block-Registrierungen,
-Vue-Komponenten), muss nach Änderungen am JavaScript-Code die Administration neu gebaut werden:
+Nach Änderungen am JavaScript-Code der Administration muss neu gebaut werden:
 ```bash
-bin/build-administration.sh
+shopware-cli extension build custom/plugins/BluerogerCmsExtensions
+# Anschließend js/ und css/ aus Resources/public/administration/assets/ nach
+# Resources/public/administration/js/ und css/ kopieren (klassisches Format)
+bin/console cache:clear
 ```
-Bei einer normalen Installation über das Backend ist dieser Schritt nicht erforderlich — Shopware
-erledigt das automatisch beim Plugin-Aktivieren.
 
 ---
 
@@ -54,7 +56,7 @@ erledigt das automatisch beim Plugin-Aktivieren.
 
 ### blr-two-col-flex — Zwei Spalten (flexibel)
 
-![blr-two-col-flex Vorschau](docs/preview-two-col-flex.png)
+![blr-two-col-flex Konfiguration](screenshots/two-col-flex.png)
 
 Zwei-Spalten-Block mit konfigurierbarer Spaltenbreite.
 
@@ -71,7 +73,7 @@ Zwei-Spalten-Block mit konfigurierbarer Spaltenbreite.
 
 ### blr-three-col-flex — Drei Spalten (flexibel)
 
-![blr-three-col-flex Vorschau](docs/preview-three-col-flex.png)
+![blr-three-col-flex Konfiguration](screenshots/three-col-flex.png)
 
 Drei-Spalten-Block mit konfigurierbarer Spaltenbreite.
 
@@ -136,7 +138,9 @@ composer qa
 
 ```bash
 # Nach JavaScript/Admin-Änderungen
-bin/build-administration.sh
+shopware-cli extension build custom/plugins/BluerogerCmsExtensions
+# Anschließend gebaute Dateien ins klassische Format kopieren (js/ und css/)
+bin/console cache:clear
 
 # Nach PHP/Twig-Änderungen
 bin/console cache:clear
@@ -152,16 +156,14 @@ GitHub Actions prüft bei jedem Push:
 
 ---
 
-## Shopware 6.7 *(in Vorbereitung — noch nicht getestet)*
+## Shopware 6.7
 
-Die Codebasis ist für Shopware 6.6 entwickelt. Eine getestete 6.7-Kompatibilität ist geplant.
+Dieses Plugin ist für Shopware 6.6 entwickelt und getestet.
 
-Die Admin-Konfigurationskomponenten verwenden bereits die Shopware Meteor UI-Komponenten
-(`mt-card`, `mt-select`, `mt-text-field`) — diese sind 6.7-kompatibel.
-
-Noch ausstehend für vollständige 6.7-Kompatibilität:
-- `Shopware.Component.register` → Composition API (größerer Umbau, nach 6.7-Test)
-- Snippet-Dateien: `de-DE.json` → `de.json`, `en-GB.json` → `en.json` (nach Verifikation)
+Shopware 6.7 stellt das Admin-Erweiterungsmodell grundlegend um — Plugins verwenden dort
+eine Meteor-App (iframe + Meteor Admin SDK) statt des bisherigen Script-Injection-Modells.
+Eine 6.7-kompatible Version erfordert eine komplette Neuimplementierung der Admin-Seite
+und ist als separates Projekt geplant.
 
 ---
 
