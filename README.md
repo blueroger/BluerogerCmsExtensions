@@ -10,7 +10,6 @@ Shopware 6 Plugin mit erweiterten CMS-Blöcken für flexible Spaltenlayouts.
 - **blr-three-col-flex** — Drei-Spalten-Block mit wählbarer Spaltenbreite (33/33/33, 25/50/25, 50/25/25, 25/25/50) und CSS-Klassen pro Spalte
 
 Alle Blöcke sind:
-- Responsive (Mobile: Spalten untereinander, Desktop: nebeneinander)
 - Konfigurierbar über das Shopware CMS-Backend
 - Mit einstellbaren Bootstrap-Breakpoints — ab welcher Bildschirmbreite Spalten nebeneinander erscheinen
 - Mit Deinstallations-Schutz — Inhalte bleiben auch nach Plugin-Entfernung erhalten (siehe unten)
@@ -31,8 +30,8 @@ Alle Blöcke sind:
 ## Installation
 
 **Über das Backend (empfohlen):**
-Plugin in das Verzeichnis `custom/plugins/` kopieren, dann im Shopware-Backend unter
-*Einstellungen → System → Plugins* installieren und aktivieren.
+ZIP-Datei aus dem [GitHub-Release](https://github.com/blueroger/BluerogerCmsExtensions/releases) herunterladen,
+dann im Shopware-Backend unter *Einstellungen → System → Plugins → Plugin hochladen* installieren und aktivieren.
 
 **Über die Konsole:**
 ```bash
@@ -167,10 +166,13 @@ und ist als separates Projekt geplant.
 
 ---
 
-## Architektur
+## Entwickelt mit KI
 
-Architektur, Entscheidungen und Qualitätssicherung wurden mit Claude AI erarbeitet.
-Die Implementierung erfolgte durch Cursor.
+Dieses Plugin wurde vollständig mit KI-Unterstützung entwickelt — von der Architektur bis zur fertigen Codebasis.
+
+**Blueroger:** Konzept, Anforderungen, Scope-Entscheidungen, manuelle Tests, Build-Workflow und finale Freigaben  
+**Claude AI:** Architektur, technische Entscheidungen, Dokumentation und Qualitätssicherung  
+**Cursor:** Implementierung — Code-Generierung auf Basis der Architektur-Vorgaben
 
 ---
 
