@@ -1,0 +1,11 @@
+{
+  "main.js": {
+    "file": "assets/blueroger-cms-extensions-BT8A4C0o.js",
+    "name": "blueroger-cms-extensions",
+    "src": "main.js",
+    "isEntry": true,
+    "css": [
+      "assets/blueroger-cms-extensions-vOYygg6z.css"
+    ]
+  }
+}

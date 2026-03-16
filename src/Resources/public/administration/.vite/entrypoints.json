@@ -1,0 +1,25 @@
+{
+  "base": "/bundles/bluerogercmsextensions/administration/",
+  "entryPoints": {
+    "blueroger-cms-extensions": {
+      "css": [
+        "/bundles/bluerogercmsextensions/administration/assets/blueroger-cms-extensions-vOYygg6z.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/bundles/bluerogercmsextensions/administration/assets/blueroger-cms-extensions-BT8A4C0o.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}
