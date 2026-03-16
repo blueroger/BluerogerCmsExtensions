@@ -1,3 +1,4 @@
+> **Shopware 6.7?** See branch [`2.x`](https://github.com/blueroger/BluerogerCmsExtensions/tree/2.x) for the Shopware 6.7 version (Meteor App).
 # BluerogerCmsExtensions
 
 Shopware 6 Plugin mit erweiterten CMS-Blöcken für flexible Spaltenlayouts.
