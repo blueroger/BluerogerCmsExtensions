@@ -1,3 +1,5 @@
+> **Shopware 6.6?** See branch [`main`](https://github.com/blueroger/BluerogerCmsExtensions/tree/main) for the Shopware 6.6 version.
+
 # BluerogerCmsExtensions
 
 Shopware 6 Plugin mit erweiterten CMS-Blöcken für flexible Spaltenlayouts.
@@ -22,7 +24,7 @@ Alle Blöcke sind:
 
 | Anforderung | Version |
 |---|---|
-| Shopware | 6.6.x |
+| Shopware | 6.7.x |
 | PHP | ^8.2 |
 
 ---
@@ -37,15 +39,6 @@ dann im Shopware-Backend unter *Einstellungen → System → Plugins → Plugin 
 ```bash
 bin/console plugin:refresh
 bin/console plugin:install --activate BluerogerCmsExtensions
-bin/console cache:clear
-```
-
-**Hinweis für Entwicklungsumgebungen:**
-Nach Änderungen am JavaScript-Code der Administration muss neu gebaut werden:
-```bash
-shopware-cli extension build custom/plugins/BluerogerCmsExtensions
-# Anschließend js/ und css/ aus Resources/public/administration/assets/ nach
-# Resources/public/administration/js/ und css/ kopieren (klassisches Format)
 bin/console cache:clear
 ```
 
@@ -136,9 +129,12 @@ composer qa
 ### Nach Änderungen im Plugin
 
 ```bash
-# Nach JavaScript/Admin-Änderungen
+# Nach JavaScript/Admin-Änderungen (Shopware 6.7 — Vite-Format, kein manuelles Kopieren nötig)
+ssh shopware67
+cd /var/www/html
+rm -rf custom/plugins/BluerogerCmsExtensions/src/Resources/public/administration/assets
+rm -rf custom/plugins/BluerogerCmsExtensions/src/Resources/public/administration/.vite
 shopware-cli extension build custom/plugins/BluerogerCmsExtensions
-# Anschließend gebaute Dateien ins klassische Format kopieren (js/ und css/)
 bin/console cache:clear
 
 # Nach PHP/Twig-Änderungen
@@ -155,14 +151,22 @@ GitHub Actions prüft bei jedem Push:
 
 ---
 
-## Shopware 6.7
+## Update von Version 1.x (Shopware 6.6) auf Version 2.x (Shopware 6.7)
 
-Dieses Plugin ist für Shopware 6.6 entwickelt und getestet.
+CMS-Block-Inhalte bleiben beim Update erhalten — sie liegen in der Datenbank, nicht im Plugin-Code.
 
-Shopware 6.7 stellt das Admin-Erweiterungsmodell grundlegend um — Plugins verwenden dort
-eine Meteor-App (iframe + Meteor Admin SDK) statt des bisherigen Script-Injection-Modells.
-Eine 6.7-kompatible Version erfordert eine komplette Neuimplementierung der Admin-Seite
-und ist als separates Projekt geplant.
+**Über Composer:**
+```bash
+# composer.json des Shops anpassen:
+"blueroger/cms-extensions": "^2.0"
+
+composer update blueroger/cms-extensions
+bin/console plugin:refresh
+```
+
+**Über das Backend:**
+ZIP aus dem [GitHub-Release](https://github.com/blueroger/BluerogerCmsExtensions/releases) herunterladen
+und als Plugin-Update hochladen.
 
 ---
 
@@ -170,8 +174,8 @@ und ist als separates Projekt geplant.
 
 Dieses Plugin wurde vollständig mit KI-Unterstützung entwickelt — von der Architektur bis zur fertigen Codebasis.
 
-**Blueroger:** Konzept, Anforderungen, Scope-Entscheidungen, manuelle Tests, Build-Workflow und finale Freigaben  
-**Claude AI:** Architektur, technische Entscheidungen, Dokumentation und Qualitätssicherung  
+**Blueroger:** Konzept, Anforderungen, Scope-Entscheidungen, manuelle Tests, Build-Workflow und finale Freigaben
+**Claude AI:** Architektur, technische Entscheidungen, Dokumentation und Qualitätssicherung
 **Cursor:** Implementierung — Code-Generierung auf Basis der Architektur-Vorgaben
 
 ---
